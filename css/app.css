@@ -15,10 +15,18 @@
     box-orient: vertical;
 }
 
-.weather-img-block img{
+.weather-img-block img {
     width: 100px;
 }
 
-.score-section{
-    letter-spacing: 3px;
+.match-section-score {
+    letter-spacing: 10px;
+}
+
+.live-match-first-team .live-match-second-team {
+    width: 30%;
+}
+
+aside>div {
+    min-height: 80vh;
 }
