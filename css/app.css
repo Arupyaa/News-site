@@ -1,3 +1,18 @@
-.card{
+.card {
     border: none;
 }
+
+.card-text {
+    display: block;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    /* max-height: 100px; */
+    overflow: hidden;
+    /* max-width: 100px; */
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* .card-body {
+    padding: 0;
+} */
