@@ -14,3 +14,7 @@
     -webkit-box-orient: vertical;
     box-orient: vertical;
 }
+
+.weather-img-block img{
+    width: 100px;
+}
