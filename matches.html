@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="css/app.css">
     <script src="js/app.js" defer></script>
 </head>
@@ -44,6 +45,81 @@
                 </div>
         </nav>
     </header>
+    <main class="container">
+        <section id="live-match-section">
+            <h2 class="mb-3">Live Matches</h2>
+            <!--from and to date form-->
+            <form class="d-flex justify-content-around">
+                <label class="form-label">
+                    Date from
+                    <input type="date" name="date-from" id="date-from" class="form-control">
+                </label>
+                <label class="form-label">
+                    Date To
+                    <input type="date" name="date-to" id="date-to" class="form-control">
+                </label>
+                <button class="search-button bg-transparent rounded-circle align-self-center d-flex align-items-center justify-content-center" href="#" style="width: 50px; height: 50px;">
+                    <i class="material-symbols-outlined">
+                        search
+                    </i>
+                </button>
+            </form>
+            <div class="accordion"> <!--accordion idea placeholder-->
+                <div class="accordion-item">
+                    <!--actual live matches section-->
+                    <div
+                        class="live-match-div d-flex justify-content-around text-center p-3 bg-body-secondary rounded-4 border border-black mb-2">
+                        <div class="live-match-first-team pt-3 col col-md-3  ">
+                            <img src="images/Arsenal_FC.png" class="img-fluid h-100" alt="team logo">
+                            <p>Arsenal</p>
+                        </div>
+                        <div class="live-match-score-section col col-md-4">
+                            <p class="match-section-score fs-1 fw-bold m-0">1:0</p>
+                            <p class="match-section-score-home text-secondary rounded-3 m-0">(1:1)</p>
+                            <p class="match-section-live-time fs-4 fw-bold m-0">65:21</p>
+                        </div>
+                        <div class="live-match-second-team pt-3 col col-md-3 ">
+                            <img src="images/chelsea.png" class="img-fluid h-100" alt="team logo">
+                            <p>Chelsea</p>
+                        </div>
+                    </div>
+                    <div
+                        class="live-match-div d-flex justify-content-around text-center p-3 bg-body-secondary rounded-4 border border-black mb-2">
+                        <div class="live-match-first-team pt-3 col col-md-3  ">
+                            <img src="images/Arsenal_FC.png" class="img-fluid h-100" alt="team logo">
+                            <p>Arsenal</p>
+                        </div>
+                        <div class="live-match-score-section col col-md-4">
+                            <p class="match-section-score fs-1 fw-bold m-0">1:0</p>
+                            <p class="match-section-score-home text-secondary rounded-3 m-0">(1:1)</p>
+                            <p class="match-section-live-time fs-4 fw-bold m-0">65:21</p>
+                        </div>
+                        <div class="live-match-second-team pt-3 col col-md-3 ">
+                            <img src="images/chelsea.png" class="img-fluid h-100" alt="team logo">
+                            <p>Chelsea</p>
+                        </div>
+                    </div>
+                    <div
+                        class="live-match-div d-flex justify-content-around text-center p-3 bg-body-secondary rounded-4 border border-black mb-2">
+                        <div class="live-match-first-team pt-3 col col-md-3  ">
+                            <img src="images/Arsenal_FC.png" class="img-fluid h-100" alt="team logo">
+                            <p>Arsenal</p>
+                        </div>
+                        <div class="live-match-score-section col col-md-4">
+                            <p class="match-section-score fs-1 fw-bold m-0">1:0</p>
+                            <p class="match-section-score-home text-secondary rounded-3 m-0">(1:1)</p>
+                            <p class="match-section-live-time fs-4 fw-bold m-0">65:21</p>
+                        </div>
+                        <div class="live-match-second-team pt-3 col col-md-3 ">
+                            <img src="images/chelsea.png" class="img-fluid h-100" alt="team logo">
+                            <p>Chelsea</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
