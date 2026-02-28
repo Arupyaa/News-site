@@ -125,55 +125,55 @@
             </div>
           </section>
 
-          <!--aside section-->
-      <div class="shadow-sm d-block d-md-none">
-        <aside class="">
-          <div class="d-flex flex-column align-content-center text-center">
-            <div class="d-flex justify-content-around align-content-center mb-4">
-              <section class="weather p-3">
-                <div class="weather-img-block">
-                  <img src="images/day_rain.svg" alt="weather icon">
+          <!--horizontal-aside section-->
+          <div class="shadow-sm d-block d-md-none">
+            <aside class="">
+              <div class="d-flex flex-column align-content-center text-center">
+                <div class="d-flex justify-content-around align-content-center mb-4">
+                  <section class="weather py-2 px-4">
+                    <img id="weather-refresh-mobile" src="images/refresh-svgrepo-com.svg">
+                    <div class="weather-img-block">
+                      <img src="images/day_rain.svg" alt="weather icon">
+                    </div>
+                    <p class="weather-temp fs-1 my-1">43°</p>
+                    <p class="weather-location fs-5">Cairo, Egypt</p>
+                  </section>
+                  <!-- <hr class="mb-3"> -->
+                  <section class="currency d-flex flex-column justify-content-center">
+                    <p class="fs-2">32.2 USD/EGP</p>
+                    <p class="fs-2">40.1 SAR/EGP</p>
+                  </section>
+                  <!-- <hr class="mb-3"> -->
                 </div>
-                <p class="weather-temp fs-1 my-1">43°</p>
-                <p class="weather-location fs-5">Cairo, Egypt</p>
-              </section>
-              <!-- <hr class="mb-3"> -->
-              <section class="currency d-flex flex-column justify-content-center">
-                <p class="fs-2">32.2 USD/EGP</p>
-                <p class="fs-2">40.1 SAR/EGP</p>
-              </section>
-              <!-- <hr class="mb-3"> -->
-            </div>
-            <section class="live-match">
-              <div class="live-match-section bg-body-tertiary p-2 rounded shadow">
-                <div class="live-match-tournament d-flex justify-content-between">
-                  <div class="d-flex">
-                    <img src="images/league.png" alt="league icon" height="30px">
-                    <p class="ms-2">Premier Leage</p>
+                <section class="live-match">
+                  <div class="live-match-section bg-body-tertiary p-2 rounded shadow">
+                    <div class="live-match-tournament d-flex justify-content-between">
+                      <div class="d-flex">
+                        <img src="images/league.png" alt="league icon" height="30px">
+                        <p class="ms-2">Premier Leage</p>
+                      </div>
+                      <span class="badge rounded-pill text-bg-danger align-self-baseline py-2 px-3">live</span>
+                    </div>
+                    <div class="live-match-body d-flex justify-content-center align-items-center text-center ">
+                      <div class="live-match-first-team pt-3 col col-md-3">
+                        <img src="images/Arsenal_FC.png" class="w-75" alt="team logo">
+                        <p>Arsenal</p>
+                      </div>
+                      <div class="live-match-score-section col col-md-4 h-100 w-auto px-3">
+                        <p class="match-section-score fs-1 fw-bold m-0">1:0</p>
+                        <p class="match-section-score-home text-secondary rounded-3 m-0">(1:1)</p>
+                        <p class="match-section-live-time fs-4 fw-bold m-0">65:21</p>
+                      </div>
+                      <div class="live-match-second-team pt-3 col col-md-3">
+                        <img src="images/chelsea.png" class="w-75" alt="team logo">
+                        <p>Chelsea</p>
+                      </div>
+                    </div>
                   </div>
-                  <span class="badge rounded-pill text-bg-danger align-self-baseline py-2 px-3">live</span>
-                </div>
-                <div
-                  class="live-match-body d-flex justify-content-center align-items-center text-center ">
-                  <div class="live-match-first-team pt-3 col col-md-3">
-                    <img src="images/Arsenal_FC.png" class="w-75" alt="team logo">
-                    <p>Arsenal</p>
-                  </div>
-                  <div class="live-match-score-section col col-md-4 h-100 w-auto px-3">
-                    <p class="match-section-score fs-1 fw-bold m-0">1:0</p>
-                    <p class="match-section-score-home text-secondary rounded-3 m-0">(1:1)</p>
-                    <p class="match-section-live-time fs-4 fw-bold m-0">65:21</p>
-                  </div>
-                  <div class="live-match-second-team pt-3 col col-md-3">
-                    <img src="images/chelsea.png" class="w-75" alt="team logo">
-                    <p>Chelsea</p>
-                  </div>
-                </div>
+                </section>
               </div>
-            </section>
+            </aside>
           </div>
-        </aside>
-      </div>
 
           <!--sports section-->
           <section class="sports">
@@ -335,6 +335,7 @@
         <aside class="">
           <div class="d-flex flex-column justify-content-between align-content-center text-center">
             <section class="weather">
+              <img id="weather-refresh" src="images/refresh-svgrepo-com.svg">
               <div class="weather-img-block">
                 <img src="images/day_rain.svg" alt="weather icon">
               </div>

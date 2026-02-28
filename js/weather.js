@@ -9,6 +9,8 @@ let weatherLocation = document.getElementsByClassName("weather-location");
 weatherLocation = Array.from(weatherLocation);
 let weatherIcons = document.querySelectorAll(".weather-img-block img");
 console.log(weatherIcons);
+let weatherRefreshIcon = document.getElementById("weather-refresh");
+let weatherRefreshMobileIcon = document.getElementById("weather-refresh-mobile");
 
 //debug code
 // console.log('test');
@@ -17,11 +19,14 @@ console.log(weatherIcons);
 // let weatherJson = localStorage.getItem("weatherJson");
 // console.log('test');
 
-homePageInit();
+updateWeatherElement(false);
+weatherRefreshIcon.addEventListener("click", () => { updateWeatherElement(true) });
+weatherRefreshMobileIcon.addEventListener("click", () => { updateWeatherElement(true) });
 
-async function homePageInit() {
+
+async function updateWeatherElement(isForceUpdate) {
     let weatherJson = localStorage.getItem("weatherJson");
-    if (weatherJson == null) {
+    if (weatherJson == null || isForceUpdate) {
         weatherJson = await getWeatherFromApi();
         localStorage.setItem("weatherJson", JSON.stringify(weatherJson));
         console.log("sent api request to weather api");
@@ -43,10 +48,3 @@ async function getWeatherFromApi() {
     return data_returned;
 }
 
-// fetch(weatherApiUrl)
-//     .then((results) => results.json())
-//     .then((data) => {
-//         document.getElementsByClassName("weather-temp")[0].innerText = data.main.temp;
-//         document.getElementsByClassName("weather-location")[0].innerText = data.name;
-//         document.querySelector(".weather-img-block img").setAttribute("src", `https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`);
-//     });
