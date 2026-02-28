@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>standings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-secondary-subtle mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5" href="#">
+                    <img src="images/news.svg" alt="Logo" width="50" class="d-inline-block align-text-middle" />
+                    News Center
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-underline ms-3 w-25 d-flex gap-5 justify-content-around">
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link active" href="matches.html">Matches</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link" href="standings.html">Standings</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link" href="stats.html">Stats</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Premier League Table</h2>
+        <form>
+            <div class="bg-body-tertiary d-flex rounded-2">
+                <span class="material-symbols-outlined align-self-center p-2 text-center">
+                    search
+                </span>
+                <input type="search" placeholder="Enter a team or competition"
+                    class="form-control bg-body-tertiary border-0">
+            </div>
+        </form>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <td></td> <!--team number-->
+                    <td></td> <!-- team logo-->
+                    <td>Team</td>
+                    <td>Played</td>
+                    <td>Won</td>
+                    <td>Drawn</td>
+                    <td>Lost</td>
+                    <td>For</td>
+                    <td>Against</td>
+                    <td>GD</td>
+                    <td>Points</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="images/arsenal.5be7ff54ce.svg" style="height: 28px;"></td>
+                    <td>Arsenal</td>
+                    <td>28</td>
+                    <td>18</td>
+                    <td>7</td>
+                    <td>3</td>
+                    <td>56</td>
+                    <td>21</td>
+                    <td>35</td>
+                    <td>61</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="images/manchester-city.e4f9593ae9.svg" style="height: 28px;"></td>
+                    <td>Manchester City</td>
+                    <td>27</td>
+                    <td>17</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>56</td>
+                    <td>25</td>
+                    <td>31</td>
+                    <td>56</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="images/aston-villa.7462c0d498.svg" style="height: 28px;"></td>
+                    <td>Aston Villa</td>
+                    <td>28</td>
+                    <td>15</td>
+                    <td>6 </td>
+                    <td>7 </td>
+                    <td>38</td>
+                    <td>30</td>
+                    <td>8 </td>
+                    <td>51</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+
+</body>
+
+</html>
