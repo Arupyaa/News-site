@@ -1,5 +1,6 @@
 .card {
     border: none;
+    min-height: 550px;
 }
 
 .card-text {
@@ -40,32 +41,42 @@ aside>div {
     }
 }
 
-.weather{
+.weather {
     position: relative;
 }
 
-#weather-refresh{
+#weather-refresh {
     height: 25px;
     position: absolute;
     top: 20px;
     right: 20px;
-    
-    &:hover{
+
+    &:hover {
         cursor: pointer;
     }
 }
 
-#weather-refresh-mobile{
+#weather-refresh-mobile {
     height: 25px;
     position: absolute;
     top: 0px;
     right: 0px;
-    
-    &:hover{
+
+    &:hover {
         cursor: pointer;
     }
 }
 
-.card .img-section img{
+.card .img-section img {
     height: 200px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body img {
+    width: 60px;
 }
