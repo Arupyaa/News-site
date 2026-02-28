@@ -65,3 +65,7 @@ aside>div {
         cursor: pointer;
     }
 }
+
+.card .img-section img{
+    height: 200px;
+}
