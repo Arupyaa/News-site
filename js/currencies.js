@@ -1,7 +1,7 @@
 let currencyUrl = "https://api.currencyapi.com/v3/latest?apikey=cur_live_WxHjTifHK5pzj1VC4uTNtYt9CqEGASPklDInKw2A";
 
-updateCurrencyElement("USD",false);
-updateCurrencyElement("SAR",false);
+// updateCurrencyElement("USD",false);
+// updateCurrencyElement("SAR",false);
 
 async function updateCurrencyElement(currency,isForceUpdate) {
     let currencyJson = localStorage.getItem("currencyJson");
