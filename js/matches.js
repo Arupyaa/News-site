@@ -43,7 +43,7 @@ async function updateLeagueList(isForceUpdate) {
 
 
 //only works on paid plan, manually choosing the league as proof of concept
-async function updateLiveMatchesForIndex() {
+async function updateLiveMatches() {
     let leagueList = await updateLeagueList(true);
     // let leagueId = leagueList.response[0].league.id;
     // let leagueName = leagueList.response[0].league.name;
@@ -55,7 +55,6 @@ async function updateLiveMatchesForIndex() {
 
     let liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`)
         .then((result) => result.json());
-    console.log(liveFixtures);
 }
 
 async function updateMatchesFromTo(from, to) {
@@ -73,5 +72,5 @@ async function updateMatchesFromTo(from, to) {
     console.log(liveFromTo);
 }
 
-updateLiveMatchesForIndex();
+updateLiveMatches();
 updateMatchesFromTo("2026-02-27", "2026-03-01");
