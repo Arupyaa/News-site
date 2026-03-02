@@ -70,7 +70,48 @@ async function updateMatchesFromTo(from, to) {
     let liveFromTo = await fetch(`${matchesFixturesUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}&from=${from}&to=${to}`)
         .then((result) => result.json());
     console.log(liveFromTo);
+
+    //clear previous match cards
+    let matchesContainer = document.getElementsByClassName("accordion-item")[0];
+    matchesContainer.innerHTML = '';
+
+    liveFromTo.result.forEach((node, nodeIndex) => {
+        let homeTeam = node.event_home_team;
+        let homeLogo = node.home_team_logo;
+        let awayTeam = node.event_away_team;
+        let awayLogo = node.away_team_logo;
+        let score = node.event_final_result;
+        let elapsedTime = node.event_status;
+
+        let matchCardDetails = `
+                        <div class="live-match-first-team pt-3 col col-md-3  ">
+                            <img src="${homeLogo}" class="img-fluid h-100" alt="team logo">
+                            <p>${homeTeam}</p>
+                        </div>
+                        <div class="live-match-score-section col col-md-4">
+                            <p class="match-section-score fs-1 fw-bold m-0">${score}</p>
+                            <p class="match-section-live-time fs-4 fw-bold m-0">${elapsedTime}</p>
+                        </div>
+                        <div class="live-match-second-team pt-3 col col-md-3 ">
+                            <img src="${awayLogo}" class="img-fluid h-100" alt="team logo">
+                            <p>${awayTeam}</p>
+                        </div>
+        `;
+        let matchCardDiv = document.createElement("div");
+        matchCardDiv.classList.add("live-match-div", "d-flex", "justify-content-around", "text-center", "p-3", "bg-body-secondary", "rounded-4", "border", "border-black", "mb-2");
+        matchCardDiv.innerHTML = matchCardDetails;
+        matchesContainer.appendChild(matchCardDiv);
+    });
 }
 
-updateLiveMatches();
-updateMatchesFromTo("2026-02-27", "2026-03-01");
+
+function getTimeFrame() {
+    let dateFromInput = document.getElementById("date-from").value;
+    let dateToInput = document.getElementById("date-to").value;
+
+    console.log(dateFromInput);
+    console.log(dateToInput);
+    updateMatchesFromTo(dateFromInput, dateToInput);
+}
+
+document.getElementsByClassName("search-button")[0].addEventListener("click", getTimeFrame);
