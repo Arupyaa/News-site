@@ -13,9 +13,9 @@ function buildNewsUrl(country, category, language = "en", searchword = undefined
 }
 
 
-updateNewsElement("politics",false);
-updateNewsElement("sports",false);
-updateNewsElement("entertainment",false);
+updateNewsElement("politics",true);
+updateNewsElement("sports",true);
+updateNewsElement("entertainment",true);
 
 //politics section
 async function updateNewsElement(category,isForceUpdate) {

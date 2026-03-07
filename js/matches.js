@@ -115,3 +115,6 @@ function getTimeFrame() {
 }
 
 document.getElementsByClassName("search-button")[0].addEventListener("click", getTimeFrame);
+
+let matchesContainer = document.getElementsByClassName("accordion-item")[0];
+    matchesContainer.innerHTML = '';
