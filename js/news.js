@@ -13,31 +13,53 @@ function buildNewsUrl(country, category, language = "en", searchword = undefined
 }
 
 
-updateNewsElement("politics",true);
-updateNewsElement("sports",true);
-updateNewsElement("entertainment",true);
+updateNewsElement("politics", false);
+updateNewsElement("sports", false);
+updateNewsElement("entertainment", false);
 
 //politics section
-async function updateNewsElement(category,isForceUpdate) {
+async function updateNewsElement(category, isForceUpdate) {
     let NewsImages = document.querySelectorAll(`.${category} .img-section img`);
     let NewsTitles = document.querySelectorAll(`.${category} h3`);
     let NewsDescription = document.querySelectorAll(`.${category} .card-text`);
     let NewsDate = document.querySelectorAll(`.${category} .date`);
     let NewsLogos = document.querySelectorAll(`.${category} .card-body img`);
-    
+
     let news = localStorage.getItem(`news${category}Json`);
-    if(news == null || isForceUpdate){
-        news = await fetch(buildNewsUrl("gb", category,"en")).then((result) => result.json());
-        localStorage.setItem(`news${category}Json`,JSON.stringify(news));
+    if (news == null || isForceUpdate) {
+        news = await fetch(buildNewsUrl("gb", category, "en")).then((result) => result.json());
+        localStorage.setItem(`news${category}Json`, JSON.stringify(news));
         console.log(`sent api request for ${category} category to news api`);
-    }else{
+    } else {
         news = JSON.parse(news);
     }
 
-    NewsImages.forEach((node, nodeIndex) => node.setAttribute("src", news.results[nodeIndex].image_url));
+    NewsImages.forEach((node, nodeIndex) => {
+        let newsImgUrl = news.results[nodeIndex].image_url;
+
+        //placing no-preview image if null or if url failed to load
+        if (newsImgUrl == null) {
+            node.setAttribute("src", "images/no-img.png");
+        } else {
+            const img = new Image();
+
+            img.onload = () => {
+
+                node.setAttribute("src", newsImgUrl);
+            };
+
+            img.onerror = () => {
+
+                node.setAttribute("src", "images/no-img.png");
+            };
+
+            img.src = newsImgUrl;
+        }
+    });
     NewsTitles.forEach((node, nodeIndex) => node.innerText = news.results[nodeIndex].title);
     NewsDescription.forEach((node, nodeIndex) => node.innerText = news.results[nodeIndex].description);
     NewsDate.forEach((node, nodeIndex) => node.innerText = news.results[nodeIndex].pubDate); //remove extra details later
     NewsLogos.forEach((node, nodeIndex) => node.setAttribute("src", news.results[nodeIndex].source_icon));
+
 }
 
