@@ -44,7 +44,7 @@ async function updateLeagueList(isForceUpdate) {
 
 //only works on paid plan, manually choosing the league as proof of concept
 async function updateLiveMatches() {
-    let leagueList = await updateLeagueList(true);
+    let leagueList = await updateLeagueList(false);
     // let leagueId = leagueList.response[0].league.id;
     // let leagueName = leagueList.response[0].league.name;
 

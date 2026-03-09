@@ -49,6 +49,11 @@ async function updateLiveMatchesForIndex() {
   }
   //loop over live matches in json
   liveFixtures.result.forEach((object, objectIndex) => {
+    //only display 3 matches on index page
+    if (objectIndex > 2) {
+      return;
+    }
+
     let liveMatchSection = document.createElement("div");
     liveMatchSection.classList.add("live-match-section", "bg-body-tertiary", "p-2", "rounded,shadow");
 
@@ -63,7 +68,7 @@ async function updateLiveMatchesForIndex() {
                         <div class="live-match-tournament d-flex justify-content-between">
                           <div class="d-flex">
                             <img src="images/league.png" alt="league icon" height="30px">
-                            <p class="ms-2">Premier Leage</p>
+                            <p class="ms-2">Premier League</p>
                           </div>
                           <span class="badge rounded-pill text-bg-danger align-self-baseline py-2 px-3">live</span>
                         </div>
@@ -93,7 +98,7 @@ async function updateLiveMatchesForIndex() {
                 <div class="live-match-tournament d-flex justify-content-between">
                   <div class="d-flex">
                     <img src="images/league.png" alt="league icon" height="30px">
-                    <p class="ms-2">Premier Leage</p>
+                    <p class="ms-2">Premier League</p>
                   </div>
                   <span class="badge rounded-pill text-bg-danger align-self-baseline py-2 px-3">live</span>
                 </div>

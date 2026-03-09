@@ -4,7 +4,7 @@ let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 let scorersEnglishPremierLeague = 152;
 
-updateTopScorers(scorersEnglishPremierLeague,true);
+updateTopScorers(scorersEnglishPremierLeague,false);
 
 async function updateTopScorers(leagueId, isForceUpdate){
     let topScorersList = localStorage.getItem(`topscorers`);
@@ -57,7 +57,7 @@ let requestOptions = {
     headers: myHeaders
 }
 
-updateFoulCards(foulEnglishPremierLeague,true);
+updateFoulCards(foulEnglishPremierLeague,false);
 
 async function updateFoulCards(league,isForceUpdate){
     let topFoulCards = localStorage.getItem(`topFoulCards`);

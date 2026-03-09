@@ -12,12 +12,6 @@ console.log(weatherIcons);
 let weatherRefreshIcon = document.getElementById("weather-refresh");
 let weatherRefreshMobileIcon = document.getElementById("weather-refresh-mobile");
 
-//debug code
-// console.log('test');
-// console.log('test');
-// localStorage.removeItem("weatherJson")
-// let weatherJson = localStorage.getItem("weatherJson");
-// console.log('test');
 
 updateWeatherElement(false);
 weatherRefreshIcon.addEventListener("click", () => { updateWeatherElement(true) });

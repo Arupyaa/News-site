@@ -3,7 +3,7 @@ let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 let englishPremierLeague = 152;
 
-updateStandings(englishPremierLeague, true);
+updateStandings(englishPremierLeague, false);
 
 async function updateStandings(leagueId, isForceUpdate) {
     let standings = localStorage.getItem(`standings${leagueId}`);
