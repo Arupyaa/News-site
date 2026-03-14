@@ -4,7 +4,7 @@ let matchesLiveUrl = "https://apiv2.allsportsapi.com/football/?met=Livescore";
 let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 
-updateLiveMatchesForIndex();
+updateLiveMatchesForIndex(false);
 
 async function updateLeagueList(isForceUpdate) {
   let leagueList = localStorage.getItem(`leagueList`);
@@ -19,24 +19,26 @@ async function updateLeagueList(isForceUpdate) {
 }
 
 //only works on paid plan, manually choosing the league as proof of concept
-async function updateLiveMatchesForIndex() {
-  // let leagueList = await updateLeagueList(true);
-  // let leagueId = leagueList.response[0].league.id;
-  // let leagueName = leagueList.response[0].league.name;
+async function updateLiveMatchesForIndex(isForceUpdate) {
+
 
   let leagueId = 152; //premier league
   let countryId = 44; //england
   let leagueName = "Premier League";
 
-  //`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`
 
-  // let liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`)
-  //     .then((result) => result.json());
-  let liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}`)
-    .then((result) => result.json());
+  let liveFixtures;
+  if (isForceUpdate || localStorage.getItem(`liveMatches_${leagueName}`) == null) {
+    liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}`)
+      .then((result) => result.json());
+    localStorage.setItem(`liveMatches_${leagueName}`, JSON.stringify(liveFixtures));
+    console.log("sent request to live matches API")
 
-  //for debugging 1/3/2026
-  console.log(`${matchesLiveUrl}&APIkey=${matchApiKey}`);
+  } else {
+    liveFixtures = JSON.parse(localStorage.getItem(`liveMatches_${leagueName}`));
+  }
+
+
 
   console.log(liveFixtures);
   let matchSection = document.getElementsByClassName("live-match");
