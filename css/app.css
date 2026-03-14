@@ -23,6 +23,10 @@
 
 .live-match-div {
     height: 150px;
+    
+    border: 2px solid #f3f4f6;
+    border-left: 3px solid black;
+    border-radius: 0 5% 5% 0;
 
     & div {
         height: 80px;
@@ -102,3 +106,9 @@
     border-left: 2px solid #C0DDF4;
     border-radius: 0 5% 5% 0;
 }
+
+.live-matches{
+    max-height: 600px;
+    overflow-y: auto;
+}
+

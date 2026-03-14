@@ -34,6 +34,9 @@ async function updateLiveMatchesForIndex(isForceUpdate) {
     localStorage.setItem(`liveMatches_${leagueName}`, JSON.stringify(liveFixtures));
     console.log("sent request to live matches API")
 
+    let todayDate = new Date().toISOString().slice(0, 10); //get only current day not specific time
+    localStorage.setItem(`liveMatches_${leagueName}_date`, todayDate);
+
   } else {
     liveFixtures = JSON.parse(localStorage.getItem(`liveMatches_${leagueName}`));
   }
@@ -135,7 +138,7 @@ async function updateLiveMatchesForIndex(isForceUpdate) {
     node.innerText = "show all live matches";
     node.classList.add("link-offset-2", "link-underline", "link-underline-opacity-0", "link-underline-opacity-100-hover")
     node.style = "cursor: pointer;";
-    node.setAttribute("href","matches.html");
+    node.setAttribute("href", "matches.html");
     matchSection[nodeIndex].appendChild(node);
   })
 }
