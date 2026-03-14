@@ -18,7 +18,7 @@ async function updateLeagueList(isForceUpdate) {
 fillLeagueSelect();
 
 async function fillLeagueSelect() {
-    let leagueList = await updateLeagueList(false);
+    let leagueList = await updateLeagueList(true);
     let selectNodes = document.getElementsByClassName("league-select");
     selectNodes = Array.from(selectNodes);
     //loop on different select elements
@@ -49,7 +49,14 @@ async function fillLeagueSelect() {
 
     });
 
-    //save first result from select as savedLeague in localstorage
-    let firstLeagueEntry = selectNodes[0].querySelector("option").value;
-    localStorage.setItem("selected_league", firstLeagueEntry);
+    //save first result from select as savedLeague in localstorage if nothing is saved
+    if(localStorage.getItem("selected_league") == null){
+        let firstLeagueEntry = selectNodes[0].querySelector("option").value;
+        localStorage.setItem("selected_league", firstLeagueEntry);
+    }else{
+        selectNodes.forEach((selectElement)=>{
+            let currentLeague = localStorage.getItem("selected_league");
+            selectElement.querySelector(`option[value="${currentLeague}"]`).setAttribute("selected",'');
+        });
+    }
 }

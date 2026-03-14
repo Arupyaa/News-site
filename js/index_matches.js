@@ -4,41 +4,45 @@ let matchesLiveUrl = "https://apiv2.allsportsapi.com/football/?met=Livescore";
 matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 
-updateLiveMatchesForIndex(false);
+//change league when league_select element changes value
+let leagueSelect = Array.from(document.getElementsByClassName("league-select"));
+leagueSelect.forEach((selectElement) => {
+  selectElement.addEventListener("change", (e) => {
+    updateLiveMatchesForIndex(true,e.target.value);
+    localStorage.setItem("selected_league", e.target.value);
+  });
+});
 
-async function updateLeagueList(isForceUpdate) {
-  let leagueList = localStorage.getItem(`leagueList`);
-  if (leagueList == null || isForceUpdate) {
-    leagueList = await fetch(`${matchesLeagueUrl}&APIkey=${matchApiKey}`)
-      .then((result) => result.json());
-    localStorage.setItem(`leagueList`, JSON.stringify(leagueList));
-  } else {
-    leagueList = JSON.parse(leagueList);
+
+/* document.addEventListener("change", (e) => {
+  if (e.target.classList.contains("league-select")) {
+    updateLiveMatchesForIndex(e.target.value);
+    localStorage.setItem("selected_league", e.target.value);
   }
-  return leagueList;
-}
+});
+ */
+updateLiveMatchesForIndex(true);
 
-//only works on paid plan, manually choosing the league as proof of concept
-async function updateLiveMatchesForIndex(isForceUpdate) {
+async function updateLiveMatchesForIndex(isForceUpdate, leagueId = -1) {
 
-
-  let leagueId = 152; //premier league
-  let countryId = 44; //england
-  let leagueName = "Premier League";
+  //leagueID = -1 means default value and user hasn't selected a league yet
+  if (leagueId == -1) {
+    leagueId = localStorage.getItem("selected_league");
+  }
 
 
   let liveFixtures;
-  if (isForceUpdate || localStorage.getItem(`liveMatches_${leagueName}`) == null) {
-    liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}`)
+  if (isForceUpdate || localStorage.getItem(`liveMatches_${leagueId}`) == null) {
+    liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`)
       .then((result) => result.json());
-    localStorage.setItem(`liveMatches_${leagueName}`, JSON.stringify(liveFixtures));
+    localStorage.setItem(`liveMatches_${leagueId}`, JSON.stringify(liveFixtures));
     console.log("sent request to live matches API")
 
     let todayDate = new Date().toISOString().slice(0, 10); //get only current day not specific time
-    localStorage.setItem(`liveMatches_${leagueName}_date`, todayDate);
+    localStorage.setItem(`liveMatches_${leagueId}_date`, todayDate);
 
   } else {
-    liveFixtures = JSON.parse(localStorage.getItem(`liveMatches_${leagueName}`));
+    liveFixtures = JSON.parse(localStorage.getItem(`liveMatches_${leagueId}`));
   }
 
 

@@ -31,28 +31,17 @@ let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0ea
 
 
 
-//only works on paid plan, manually choosing the league as proof of concept
-async function updateLiveMatches() {
-    let leagueList = await updateLeagueList(false);
-    // let leagueId = leagueList.response[0].league.id;
-    // let leagueName = leagueList.response[0].league.name;
 
-    let leagueId = 152;
-    let leagueName = "Premier League";
 
-    //`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`
-
-    let liveFixtures = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`)
-        .then((result) => result.json());
-}
-
-async function updateMatchesFromTo(from, to) {
+async function updateMatchesFromTo(from, to,leagueId = -1) {
     // let leagueList = await updateLeagueList(true);
     // let leagueId = leagueList.response[0].league.id;
-    // let leagueName = leagueList.response[0].league.name;
+    // let leagueId = leagueList.response[0].league.name;
 
-    let leagueId = 152;
-    let leagueName = "Premier League";
+    //leagueID = -1 means default value and user hasn't selected a league yet
+    if (leagueId == -1) {
+        leagueId = localStorage.getItem("selected_league");
+    }
 
     //`${matchesFixturesUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}&from=${from}&to=${to}`
 
@@ -108,18 +97,23 @@ document.getElementsByClassName("search-button")[0].addEventListener("click", ge
 let matchesContainer = document.getElementsByClassName("to-from-section")[0];
 matchesContainer.innerHTML = '';
 
-async function showLiveMatches(leagueName = "Premier League") {
+async function showLiveMatches(leagueId = -1) {
+    //leagueID = -1 means default value and user hasn't selected a league yet
+    if (leagueId == -1) {
+        leagueId = localStorage.getItem("selected_league");
+    }
+
     let todayDate = new Date().toISOString().slice(0, 10); //get only current day not specific time
     let liveMatches;
-    console.log(localStorage.getItem(`liveMatches_${leagueName}_date`)); //logs old livematches date
-    
-    if (localStorage.getItem(`liveMatches_${leagueName}_date`) === todayDate) {
-        liveMatches = JSON.parse(localStorage.getItem(`liveMatches_${leagueName}`));
+    console.log(localStorage.getItem(`liveMatches_${leagueId}_date`)); //logs old livematches date
+
+    if (localStorage.getItem(`liveMatches_${leagueId}_date`) === todayDate) {
+        liveMatches = JSON.parse(localStorage.getItem(`liveMatches_${leagueId}`));
     } else {
-        localStorage.setItem(`liveMatches_${leagueName}_date`, todayDate);
-        liveMatches = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}`)
+        localStorage.setItem(`liveMatches_${leagueId}_date`, todayDate);
+        liveMatches = await fetch(`${matchesLiveUrl}&APIkey=${matchApiKey}&leagueId=${leagueId}`)
             .then((result) => result.json());
-        localStorage.setItem(`liveMatches_${leagueName}`, JSON.stringify(liveMatches));
+        localStorage.setItem(`liveMatches_${leagueId}`, JSON.stringify(liveMatches));
         console.log("sent request to live matches API");
     }
 
