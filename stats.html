@@ -44,47 +44,55 @@
     </nav>
   </header>
 
-  <main class="container d-flex justify-content-between flex-column flex-lg-row">
-    <div id="top-scorers" class="shadow p-3 rounded-4 ">
-      <h2>Top Scorers</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Name</th>
-            <th>Team</th>
-            <th>Goals</th>
-            <th>Assists</th>
-            <!-- <th>Played</th> -->
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
-    </div>
-    <div id="yellow-red-cards" class="shadow p-3 rounded-4 ">
-      <h2>Cards</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Name</th>
-            <th>Team</th>
-            <th>Yellow cards</th>
-            <th>Red cards</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
+  <main class="container">
+
+    <form class="my-3">
+      <select class="league-select form-select">
+      </select>
+    </form>
+
+    <div class="d-flex justify-content-between flex-column flex-lg-row">
+      <div id="top-scorers" class="shadow p-3 rounded-4 ">
+        <h2>Top Scorers</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Name</th>
+              <th>Team</th>
+              <th>Goals</th>
+              <th>Assists</th>
+              <!-- <th>Played</th> -->
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div id="yellow-red-cards" class="shadow p-3 rounded-4 ">
+        <h2>Cards</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Name</th>
+              <th>Team</th>
+              <th>Yellow cards</th>
+              <th>Red cards</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </main>
 
   <script src="js/stats.js"></script>
+  <script src="js/leagues.js"></script>
 </body>
 
 </html>

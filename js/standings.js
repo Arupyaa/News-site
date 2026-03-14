@@ -59,3 +59,10 @@ async function updateStandings(isForceUpdate, leagueId = -1) {
 
 
 }
+
+
+let leagueSelect = document.getElementsByClassName("league-select")[0];
+leagueSelect.addEventListener("change", (e) => {
+    updateStandings(true, e.target.value);
+    localStorage.setItem("selected_league", e.target.value);
+});

@@ -1,7 +1,7 @@
-let matchesLeagueUrl = "https://apiv2.allsportsapi.com/football/?met=Leagues";
+matchesLeagueUrl = "https://apiv2.allsportsapi.com/football/?met=Leagues";
 let matchesFixturesUrl = "https://apiv2.allsportsapi.com/football/?met=Fixtures";
 let matchesLiveUrl = "https://apiv2.allsportsapi.com/football/?met=Livescore";
-let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
+matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 // let myHeaders = new Headers();
 // myHeaders.append("x-apisports-key", matchApiKey);
 // let requestOptions = {
@@ -33,7 +33,7 @@ let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0ea
 
 
 
-async function updateMatchesFromTo(from, to,leagueId = -1) {
+async function updateMatchesFromTo(from, to, leagueId = -1) {
     // let leagueList = await updateLeagueList(true);
     // let leagueId = leagueList.response[0].league.id;
     // let leagueId = leagueList.response[0].league.name;
@@ -152,3 +152,9 @@ async function showLiveMatches(leagueId = -1) {
 
 //show live matches on page load
 showLiveMatches();
+
+let leagueSelect = document.getElementsByClassName("league-select")[0];
+leagueSelect.addEventListener("change", (e) => {
+    showLiveMatches(e.target.value);
+    localStorage.setItem("selected_league", e.target.value);
+});

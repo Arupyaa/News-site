@@ -100,3 +100,8 @@ async function updateFoulCards(league, isForceUpdate) {
     });
 }
 
+let leagueSelect = document.getElementsByClassName("league-select")[0];
+leagueSelect.addEventListener("change", (e) => {
+    updateTopScorers(true, e.target.value);
+    localStorage.setItem("selected_league", e.target.value);
+});
