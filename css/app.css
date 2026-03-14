@@ -23,7 +23,7 @@
 
 .live-match-div {
     height: 150px;
-    
+
     border: 2px solid #f3f4f6;
     border-left: 3px solid black;
     border-radius: 0 5% 5% 0;
@@ -107,8 +107,18 @@
     border-radius: 0 5% 5% 0;
 }
 
-.live-matches{
+.live-matches {
     max-height: 600px;
     overflow-y: auto;
 }
 
+
+#top-scorers,
+#yellow-red-cards {
+    /* border: 2px solid #f3f4f6;
+    border-left: 2px solid #C0DDF4;
+    border-radius: 0 5% 5% 0; */
+    border: 1px solid #f3f4f6;
+    border-top: 3px solid black;
+    border-radius: 10px;
+}
