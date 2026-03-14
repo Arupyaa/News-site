@@ -94,3 +94,11 @@
     box-orient: vertical;
     font-size: 24px;
 }
+
+.live-match-section,
+.currency,
+.weather {
+    border: 2px solid #f3f4f6;
+    border-left: 2px solid #C0DDF4;
+    border-radius: 0 5% 5% 0;
+}

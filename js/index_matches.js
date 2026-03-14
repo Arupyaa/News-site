@@ -57,7 +57,7 @@ async function updateLiveMatchesForIndex(isForceUpdate) {
     }
 
     let liveMatchSection = document.createElement("div");
-    liveMatchSection.classList.add("live-match-section", "bg-body-tertiary", "p-2", "rounded,shadow");
+    liveMatchSection.classList.add("live-match-section", "p-2");
 
     let homeTeamName = object.event_home_team;
     let homeTeamLogo = object.home_team_logo;
@@ -121,10 +121,21 @@ async function updateLiveMatchesForIndex(isForceUpdate) {
                 </div>
         `;
     let liveMatchSectionVertical = document.createElement("div");
-    liveMatchSectionVertical.classList.add("live-match-section", "bg-body-tertiary", "p-2", "rounded", "shadow");
+    liveMatchSectionVertical.classList.add("live-match-section", "p-2");
     liveMatchSectionVertical.innerHTML = liveMatchSectionDesktop;
     matchSection[1].appendChild(liveMatchSectionVertical);
 
-  });
 
+
+  });
+  //add show more anchor link
+  let showMore = [undefined, undefined];
+  showMore.forEach((node, nodeIndex) => {
+    node = document.createElement("a");
+    node.innerText = "show all live matches";
+    node.classList.add("link-offset-2", "link-underline", "link-underline-opacity-0", "link-underline-opacity-100-hover")
+    node.style = "cursor: pointer;";
+    node.setAttribute("href","matches.html");
+    matchSection[nodeIndex].appendChild(node);
+  })
 }
