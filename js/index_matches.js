@@ -1,7 +1,7 @@
-let matchesLeagueUrl = "https://apiv2.allsportsapi.com/football/?met=Leagues";
+matchesLeagueUrl = "https://apiv2.allsportsapi.com/football/?met=Leagues";
 let matchesFixturesUrl = "https://apiv2.allsportsapi.com/football/?met=Fixtures";
 let matchesLiveUrl = "https://apiv2.allsportsapi.com/football/?met=Livescore";
-let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
+matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 
 updateLiveMatchesForIndex(false);

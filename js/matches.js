@@ -28,18 +28,7 @@ let matchApiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0ea
     return leagueList;
 } */
 
-//free plan function (only 2 random leagues)
-async function updateLeagueList(isForceUpdate) {
-    let leagueList = localStorage.getItem(`leagueList`);
-    if (leagueList == null || isForceUpdate) {
-        leagueList = await fetch(`${matchesLeagueUrl}&APIkey=${matchApiKey}`)
-            .then((result) => result.json());
-        localStorage.setItem(`leagueList`, JSON.stringify(leagueList));
-    } else {
-        leagueList = JSON.parse(leagueList);
-    }
-    return leagueList;
-}
+
 
 
 //only works on paid plan, manually choosing the league as proof of concept
