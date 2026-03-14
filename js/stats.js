@@ -2,16 +2,21 @@
 let topScorersUrl = "https://apiv2.allsportsapi.com/football/?met=Topscorers";
 let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
-let scorersEnglishPremierLeague = 152;
 
-updateTopScorers(scorersEnglishPremierLeague,false);
 
-async function updateTopScorers(leagueId, isForceUpdate){
+updateTopScorers(false);
+
+async function updateTopScorers(isForceUpdate, leagueId = -1) {
+    //leagueID = -1 means default value and user hasn't selected a league yet
+    if (leagueId == -1) {
+        leagueId = localStorage.getItem("selected_league");
+    }
+
     let topScorersList = localStorage.getItem(`topscorers`);
-    if(topScorersList == null || isForceUpdate){
+    if (topScorersList == null || isForceUpdate) {
         topScorersList = await fetch(`${topScorersUrl}&APIkey=${apiKey}&leagueId=${leagueId}`).then((result) => result.json());
-        localStorage.setItem(`topscorers`,JSON.stringify(topScorersList));
-    }else{
+        localStorage.setItem(`topscorers`, JSON.stringify(topScorersList));
+    } else {
         topScorersList = JSON.parse(topScorersList);
     }
 
@@ -19,7 +24,7 @@ async function updateTopScorers(leagueId, isForceUpdate){
     let topScorersTableBody = document.querySelector("#top-scorers table tbody");
     topScorersTableBody.innerHTML = ``;
 
-    topScorersList.result.forEach((node,nodeIndex)=>{
+    topScorersList.result.forEach((node, nodeIndex) => {
         let ranking = node.player_place;
         let name = node.player_name;
         let team = node.team_name
@@ -33,7 +38,7 @@ async function updateTopScorers(leagueId, isForceUpdate){
                 <td>${name}</td>
                 <td>${team}</td>
                 <td>${goals}</td>
-                <td>${assists==null?0:assists}</td>
+                <td>${assists == null ? 0 : assists}</td>
                 <td></td>
         `;
         row.innerHTML = rowData;
@@ -57,15 +62,15 @@ let requestOptions = {
     headers: myHeaders
 }
 
-updateFoulCards(foulEnglishPremierLeague,false);
+updateFoulCards(foulEnglishPremierLeague, false);
 
-async function updateFoulCards(league,isForceUpdate){
+async function updateFoulCards(league, isForceUpdate) {
     let topFoulCards = localStorage.getItem(`topFoulCards`);
-    if(topFoulCards == null | isForceUpdate){
-        topFoulCards = await fetch(`${foulCardsUrl}&league=${foulEnglishPremierLeague}`,requestOptions).then((result)=>result.json());
+    if (topFoulCards == null | isForceUpdate) {
+        topFoulCards = await fetch(`${foulCardsUrl}&league=${foulEnglishPremierLeague}`, requestOptions).then((result) => result.json());
         console.log(topFoulCards);
-        localStorage.setItem(`topFoulCards`,JSON.stringify(topFoulCards));
-    }else{
+        localStorage.setItem(`topFoulCards`, JSON.stringify(topFoulCards));
+    } else {
         topFoulCards = JSON.parse(topFoulCards);
     }
 
@@ -73,7 +78,7 @@ async function updateFoulCards(league,isForceUpdate){
     let foulCardTableBody = document.querySelector("#yellow-red-cards table tbody");
     foulCardTableBody.innerHTML = '';
 
-    topFoulCards.response.forEach((node,nodeIndex)=>{
+    topFoulCards.response.forEach((node, nodeIndex) => {
         let name = node.player.name;
         let img = node.player.photo;
         let team = node.statistics[0].team.name;

@@ -1,11 +1,16 @@
 let standingsUrl = "https://apiv2.allsportsapi.com/football/?met=Standings";
 let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
-let englishPremierLeague = 152;
 
-updateStandings(englishPremierLeague, false);
 
-async function updateStandings(leagueId, isForceUpdate) {
+updateStandings(false);
+
+async function updateStandings(isForceUpdate, leagueId = -1) {
+    //leagueID = -1 means default value and user hasn't selected a league yet
+    if (leagueId == -1) {
+        leagueId = localStorage.getItem("selected_league");
+    }
+
     let standings = localStorage.getItem(`standings${leagueId}`);
     if (standings == null || isForceUpdate) {
         standings = await fetch(`${standingsUrl}&APIkey=${apiKey}&leagueId=${leagueId}`).then((result) => result.json());
@@ -17,7 +22,7 @@ async function updateStandings(leagueId, isForceUpdate) {
 
     //clear old table
     let tableBody = document.querySelector("tbody");
-    tableBody.innerHTML =''; 
+    tableBody.innerHTML = '';
 
     standings.result.total.forEach((node, nodeIndex) => {
         let row = document.createElement("tr");
@@ -34,7 +39,7 @@ async function updateStandings(leagueId, isForceUpdate) {
         let points = node.standing_PTS
 
         let rowData = `
-    <td>${nodeIndex+1}</td>
+    <td>${nodeIndex + 1}</td>
     <td><img src="${teamLogo}" class="football-team-logo"></td>
     <td>${teamName}</td>
     <td>${played}</td>
