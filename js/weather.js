@@ -13,7 +13,7 @@ let weatherRefreshIcon = document.getElementById("weather-refresh");
 let weatherRefreshMobileIcon = document.getElementById("weather-refresh-mobile");
 
 
-updateWeatherElement(false);
+updateWeatherElement(true);
 weatherRefreshIcon.addEventListener("click", () => { updateWeatherElement(true) });
 weatherRefreshMobileIcon.addEventListener("click", () => { updateWeatherElement(true) });
 

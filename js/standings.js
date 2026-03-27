@@ -3,7 +3,7 @@ let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 
 
-updateStandings(false);
+updateStandings(true);
 
 async function updateStandings(isForceUpdate, leagueId = -1) {
     //leagueID = -1 means default value and user hasn't selected a league yet

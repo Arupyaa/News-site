@@ -4,7 +4,7 @@ let apiKey = "37430409c69a57beef8cb10a2b4a71be78cab74dc2656a9ebe4bee2dcb0eaab1";
 
 
 
-updateTopScorers(false);
+updateTopScorers(true);
 
 async function updateTopScorers(isForceUpdate, leagueId = -1) {
     //leagueID = -1 means default value and user hasn't selected a league yet
@@ -55,14 +55,14 @@ let foulCardsUrl = "https://v3.football.api-sports.io/players/topyellowcards?sea
 
 let foulEnglishPremierLeague = 39;
 
-let foulApiKey = "993b462d72079fb49b006658cb8848ee";
+let foulApiKey = "ee8461f9707980be7cb37a60ccb84738";
 let myHeaders = new Headers();
 myHeaders.append("x-apisports-key", foulApiKey);
 let requestOptions = {
     headers: myHeaders
 }
 
-updateFoulCards(foulEnglishPremierLeague, false);
+updateFoulCards(foulEnglishPremierLeague, true);
 
 async function updateFoulCards(league, isForceUpdate) {
     let topFoulCards = localStorage.getItem(`topFoulCards`);
